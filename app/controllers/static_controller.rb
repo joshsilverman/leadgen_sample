@@ -1,5 +1,8 @@
 class StaticController < ApplicationController
   
+  def index
+  end
+
   def land
   end
 
