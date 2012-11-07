@@ -1,5 +1,10 @@
 :javascript
   mixpanel.track("sathabit_engage")
-  mixpanel.track("sathabit_d1")
 
-engage
+  // condition for checkign if d1 = true
+  if (true) {
+    mixpanel.track("sathabit_d1")
+    mixpanel.people.set({d1:true})
+  }
+
+%h3 You have engaged and triggered engaged/d1!

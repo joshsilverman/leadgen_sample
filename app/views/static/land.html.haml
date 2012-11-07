@@ -1,4 +1,26 @@
 :javascript
-  mixpanel.track("sathabit_arrival", {"twi_screen_name" : "studyegg", "asker_id": "2"})
 
-land
+  // grab query string and declare vars
+  var mixpanel_vars = window.location.search.substring(1).split('&')
+  var mixpanel_user_hash = {}
+  var mixpanel_twitter_referrer = ''
+
+  // iterate through query string load vars
+  for (var i = 0; i < mixpanel_vars.length; i++) {
+      var pair = mixpanel_vars[i].split('=');
+      console.log(pair)
+      if (pair[0] == "utm_content") {
+        mixpanel_twitter_referrer = pair[1]
+      } else {
+        mixpanel_user_hash[pair[0]] = pair[1] 
+      }
+  }
+
+  // trigger load
+  if (mixpanel_user_hash['utm_source'] == 'wisr')
+    mixpanel.track("sathabit_arrival", mixpanel_user_hash)
+
+%h3 
+  You've landed on SAThabit
+  >>
+  = link_to "Click here to activate", "/static/activate"
