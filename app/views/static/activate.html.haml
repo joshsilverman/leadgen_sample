@@ -1,5 +1,20 @@
 :javascript
-  mixpanel.track("sathabit_activation")
+
+  // ********** EDIT ************** //
+  var i,x,y,ARRcookies=document.cookie.split(";");
+  for (i=0;i<ARRcookies.length;i++) {
+    x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+    y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+    x=x.replace(/^\s+|\s+$/g,"");
+    if (x=='wisr') {
+
+      // tracking event
+      mixpanel.track("sathabit_activation");
+      break;
+    }
+  }
+  // ********* END EDIT *********** //
+
 
 %h3 
   You've just activated SAThabit

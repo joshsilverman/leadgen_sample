@@ -16,9 +16,14 @@
       }
   }
 
-  // trigger load
-  if (mixpanel_user_hash['utm_source'] == 'wisr')
+  if (mixpanel_user_hash['utm_source'] == 'wisr') {
+    // tracking event
     mixpanel.track("sathabit_arrival", mixpanel_user_hash)
+
+    // ********** EDIT ************** //
+    document.cookie="wisr=true;expires=Sat, 07 Apr 2040 01:03:23 GMT";
+    // ********* END EDIT *********** //
+  }
 
 %h3 
   You've landed on SAThabit
